@@ -1,0 +1,353 @@
+
+body.bg{
+  height: 100vh;
+  background: url('pyra.png'), linear-gradient(to bottom, #000000 0%, #311460 100%);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 90%, 100%;
+  background-attachment: fixed;
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+  position: absolute;
+}
+body.bgblack{
+  height: 100vh;
+  background: url('pyra.png'), #000000;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 90%, 100%;
+  background-attachment: fixed;
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+  position: absolute;
+}
+
+h1{
+  -webkit-filter: drop-shadow(5px 5px 1x #000000);
+  filter: drop-shadow(5px 5px 1px #000000);
+  -webkit-filter: drop-shadow(5px 5px 8x gray);
+  filter: drop-shadow(5px 5px 8px gray);
+}
+
+
+#webportfolio{
+  color: rgba(255,255,255,.65);
+  font-size: 150px;
+  width: 1000px;
+}
+#homehead{
+  left: 50%;
+  margin-left: -500px;
+}
+
+.white{
+  color: white;
+}
+
+
+#info{
+  font-family: Impact, sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  color: white;
+  transition: .2s ease-in-out;
+  display: inline-block;
+}
+
+#start{
+  font-family: Impact, sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+  position: relative;
+  color: white;
+  width: 100px;
+  left: 50%;
+
+  margin-left: -50px;
+  transition: .2s ease-in-out;
+}
+#start:hover{
+  -webkit-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+  -webkit-filter: drop-shadow(5px 5px 1x #000000);
+  filter: drop-shadow(5px 5px 1px #000000);
+  transition: .2s ease-in-out;
+}
+#home{
+  font-family: Impact, sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  color: white;
+  transition: .2s ease-in-out;
+  display: inline-block;
+}
+#home:hover{
+  -webkit-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+  -webkit-filter: drop-shadow(5px 5px 1x #000000);
+  filter: drop-shadow(5px 5px 1px #000000);
+  transition: .2s ease-in-out;
+}
+#reset{
+  font-family: Impact, sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+  color: white;
+  transition: .2s ease-in-out;
+}
+#reset:hover{
+  -webkit-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+  -webkit-filter: drop-shadow(5px 5px 1x #000000);
+  filter: drop-shadow(5px 5px 1px #000000);
+  transition: .2s ease-in-out;
+}
+
+.whitehover{
+  font-family: Impact, sans-serif;
+  font-size: 40px;
+  color: white;
+  transition: .2s ease-in-out;
+}
+.whitehover:hover{
+  color: white;
+  -webkit-transform: scale(1.1,1.1);
+  transform: scale(1.1,1.1);
+  -webkit-filter: drop-shadow(5px 5px 1x #000000);
+  filter: drop-shadow(5px 5px 1px #000000);
+  transition: .2s ease-in-out;
+}
+
+
+.thin_border{
+  border: 1px solid white;
+}
+
+.pad{
+  padding-top: 90px;
+}
+
+.hidden{
+  display: none;
+}
+
+.fake{
+  cursor:pointer;
+}
+
+/* Animation*/
+.animate{
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/*Delay*/
+.one{
+  -webkit-animation-delay: .25s;
+  -moz-animation-delay: .25s;
+  animation-delay: .25s;
+}
+
+/*animation keyframes for index page*/
+@-webkit-keyframes fade{
+  from{
+    opacity: 0;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+  }
+  to{
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from{
+    opacity: 0;
+    -webkit-transform:translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+  }
+  to{
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fade{
+  -webkit-animation-name: fade;
+  animation-name: fade;
+}
+
+
+/*SCRIPT FOR GAME*/
+img.resize{
+  max-width: 100px;
+  max-height: 100px;
+  opacity: .95;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+
+}
+
+
+img.animate{
+  transform: scale(.1,.1);
+  transition: all 300ms;
+}
+
+div.padd{
+  margin-left: 30%;
+}
+
+div.colmn{
+  column-width: 100px;
+}
+
+div.basecenter{
+  position: relative;
+  left: 50%;
+  width: 1000px;
+
+  margin-left: -500px;
+}
+
+/**BG ANIMATION*/
+@keyframes bgred{
+  from{
+    height: 100vh;
+    background: url('pyra.png'), #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+  to{
+    height: 100vh;
+    background: url('pyra.png'), #890000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+}
+
+@keyframes bggreen{
+  from{
+    height: 100vh;
+    background: url('pyra.png'), #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+  to{
+    height: 100vh;
+    background: url('pyra.png'), #003007;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+}
+
+.bgred{
+  animation-name: bgred;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+.bggreen{
+  animation-name: bggreen;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+
+/**SET OF ANIMATIONS FOR FIRST TRY BG TO BLACK*/
+@keyframes redblack {
+  from{
+    height: 100vh;
+    background: url('pyra.png'), #890000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+  to{
+    height: 100vh;
+    background: url('pyra.png'), #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+}
+.bgredR{
+  animation-name: redblack;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes greenblack {
+  from{
+    height: 100vh;
+    background: url('pyra.png'), #003007;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+  to{
+    height: 100vh;
+    background: url('pyra.png'), #000000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 90%, 100%;
+    background-attachment: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+  }
+}
+.bggreenR{
+  animation-name: greenblack;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}

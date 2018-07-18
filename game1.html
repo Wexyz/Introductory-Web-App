@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="scripty.js"></script>
+    <title>TEST</title>
+
+
+  </head>
+  <body id="body" class="bg">
+
+    <div id="base" class="container ">
+
+      <div class="basecenter pad">
+
+        <div class="row padd">
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box1">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box2">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box3">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box4">
+          </div>
+        </div>
+
+        <div class="row padd">
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box5">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box6">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box7">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box8">
+          </div>
+        </div>
+
+        <div class="row padd">
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box9">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box10">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box11">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box12">
+          </div>
+        </div>
+
+        <div class="row padd">
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box13">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box14">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box15">
+          </div>
+          <div class="column colmn">
+            <img src="box.png" class="resize b" id="box16">
+          </div>
+        </div>
+      </div>
+
+
+        <p class="fake text-center" id="start" style='padding-top: 10px'>START</p>
+
+      <div id="endg" class="text-center hidden" style="color: white;">
+        <span class="fake" id="reset">RESET</span>
+      </div>
+
+<p class="text-center"><a href="Index.html" class="text-center" id="home">HOME</a></p>
+<p class="text-center"><a href="#" class="text-center" id="info">info</a></p>
+
+    </div>
+
+    <!--SCRIPT FOR GAME-->
+    <script>
+    var count = 0;
+    var correct = 7;
+    var temp = 0;
+    var array = [];
+    var bgtemp = 0;
+    array.length = 16;
+
+    while(temp != 7){
+      temp = 0;
+      for(var y=0;y<16;y++){
+        array[y] = Boolean(Math.random()>.5) ? 1 : 0;
+        temp = temp + array[y];
+        }
+    }
+
+    for(var x = 0; x < 4; x++){
+      $('#tempo1').append(array[x]);
+    }
+    for(var x = 4; x < 8; x++){
+      $('#tempo2').append(array[x]);
+    }
+    for(var x = 8; x < 12; x++){
+      $('#tempo3').append(array[x]);
+    }
+    for(var x = 12; x < 16; x++){
+      $('#tempo4').append(array[x]);
+    }
+
+
+      $(document).ready(function(){
+
+          $('#body').fadeIn('fast');
+          $('#body').removeClass('bgred');
+          $('#body').removeClass('bggreen');
+
+//DISABLE CLICKABLITY
+          for(var x=1;x<=16;x++){$('#box'+x).removeClass('b');}
+
+//RESET CODE
+          $(document).ready(function(){
+            $('#reset').on('click',function(){
+              if(bgtemp == 1){$('#body').addClass('bggreenR');}
+              else{$('#body').addClass('bgredR');}
+                $('#body').empty().load('game1restart.html');
+
+            });
+          });
+//SHOW THEN HIDE
+          $('#start').click(function(){
+
+            $('#start').fadeOut('fast');
+            $('#info').fadeOut('fast');
+
+            for(var x=1;x<=16;x++){
+              if(array[x-1]==1){
+                $('#box'+x).fadeOut('fast', function(){
+                  $(this).attr('src','circle.png');
+                });
+                $('#box'+x).fadeIn('fast')
+              }
+
+              else{
+                $('#box'+x).fadeOut('fast', function(){
+                  $(this).attr('src','ex.png');
+                });
+                $('#box'+x).fadeIn('fast');
+              }
+            }
+
+            setTimeout(function(){
+              for(var x=1;x<=16;x++){
+                $('#box'+x).fadeOut('fast', function(){
+                  $(this).attr('src','box.png');
+                });
+                $('#box'+x).fadeIn('fast');
+                for(var z=1;z<=16;z++){$('#box'+z).addClass('b');}
+              }
+            },3000);
+
+          });
+
+//BOXES CODE
+        $(document).on('click', '.b',function(){
+
+          var nme = $(this).attr('id');
+          var ind = nme.indexOf('x');
+          var tmp = nme.slice(ind+1);
+
+//REFERRING TO THE ARRAY, ALWAYS USE array[tmp-1]
+          //TURN TO FROM BOX TO CIRCLE
+          if(array[tmp-1] == 1){
+
+            $('#box'+tmp).fadeOut('fast', function(){
+              $(this).attr('src','circleG.png');
+            });
+            $('#box'+tmp).fadeIn('fast');
+
+            $(this).removeAttr('id');
+
+            count = count + 1;
+            //IF ALL CORRECT ARE SELECTED
+              if(count == correct){
+                $('#body').addClass('bggreen'); bgtemp = 1;
+                for(var y=1;y<=16;y++){$('#box'+y).removeAttr('id');}
+                $('#endg').fadeIn('fast');
+              }
+
+          }
+          //TURN ALL BOXES TO THEIR SHAPES WHEN ERROR
+          else{
+            //BG ANIMATE TO RED
+            $('#body').addClass('bgred');
+
+            for(var y = 1; y<= 16; y++){
+              if(array[y-1]==1){
+                $('#box'+y).fadeOut('fast', function(){
+                  $(this).attr('src','circle.png');
+                  });
+                $('#box'+y).fadeIn('fast');
+                }
+              else{
+                $('#box'+y).fadeOut('fast', function(){
+                  $(this).attr('src','exR.png');
+                  });
+                $('#box'+y).fadeIn('fast');
+                }
+              $('#box'+y).removeAttr('id');
+            }
+            $('#endg').fadeIn('fast');
+          }
+
+        });
+//INFO ALERT
+      $('#info').click(function(e){
+        e.preventDefault();
+        alert('The following memory game is a coding attempt of the iOS game entitled "100%" developed by Nathan Malville and published by Umbrella Games LLC');
+      });
+
+      });
+    </script>
+
+  </body>
+</html>

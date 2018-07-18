@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="scripty.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      var set = 0;
+    </script>
+  </head>
+
+  <body class="bg">
+
+    <div class="container">
+
+      <div class="topbar text-center  animate fade">
+        <p id="gallerytb">GALLERY</p>
+
+      </div>
+
+      <div class="menu text-center  animate fade"
+      style="padding-top: 10px; overflow:hidden;">
+        <p><a href="#" class="btn whitehover"
+        id="menu-toggle" onclick="output_value(); return false">MENU</a></p>
+
+      </div>
+
+      <div id="wrapper" style="text-align: center;">
+      <div id="side">
+
+          <div class="previewimg" id="prev1">
+            <img src="imgempty.png" class="imghi" id="img1">
+          </div>
+          <div class="previewimg" id="prev2">
+            <img src="imgempty.png" class="imghi" id="img2">
+          </div>
+          <div class="previewimg" id="prev3">
+            <img src="imgempty.png" class="imghi" id="img3">
+          </div>
+          <div class="previewimg" id="prev4">
+            <img src="imgempty.png" class="imghi" id="img4">
+          </div>
+
+      <div class="text-center" id="tester">
+        <input type="file" id="uploader" class="hidden"
+        accept="image/*"/ onchange="readURL(this, set);"
+        onclick="output_value(); return false">
+        <label for="uploader" class="whitehover" style="margin-top:10px; font-size: 30px;">UPLOAD</label>
+        <div>
+          <a href="index.html" style="color:gray;font-size:20px;" class="whitehover">HOME</a>
+        </div>
+      </div>
+
+      </div>
+      </div>
+
+      <div class="gallerycanvas thin_border animate fade">
+        <img src="imgempty.png" class="gallerycanvas" id="big">
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        var temp = null;
+
+        $('.menu').click(function(){
+          $('#wrapper').toggleClass('menudisplayed');
+        });
+
+        $('#prev1').click(function(){
+          set = 1;
+          $(this).addClass('greenb');
+          $('#big').attr('src',$('#img'+set).attr('src'));
+          for(var x=1;x<=4;x++){if(x != set){
+            $('#prev'+x).removeClass('greenb');}}
+        });
+        $('#prev2').click(function(){
+          set = 2;
+          $(this).addClass('greenb');
+          $('#big').attr('src',$('#img'+set).attr('src'));
+          for(var x=1;x<=4;x++){
+            if(x != set){
+              $('#prev'+x).removeClass('greenb');
+            }
+          }
+        });
+        $('#prev3').click(function(){
+          set = 3;
+          $(this).addClass('greenb');
+          $('#big').attr('src',$('#img'+set).attr('src'));
+          for(var x=1;x<=4;x++){
+            if(x != set){
+              $('#prev'+x).removeClass('greenb');
+            }
+          }
+        });
+        $('#prev4').click(function(){
+          set = 4;
+          $(this).addClass('greenb');
+          $('#big').attr('src',$('#img'+set).attr('src'));
+          for(var x=1;x<=4;x++){
+            if(x != set){
+              $('#prev'+x).removeClass('greenb');
+            }
+          }
+        });
+
+      });
+
+    </script>
+
+  </body>
+</html>
