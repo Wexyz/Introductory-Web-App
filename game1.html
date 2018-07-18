@@ -93,18 +93,12 @@
     <script>
     var count = 0;
     var correct = 7;
-    var temp = 0;
+    //var temp = 0;
     var array = [];
     var bgtemp = 0;
     array.length = 16;
+    var resetbg = 0;
 
-    while(temp != 7){
-      temp = 0;
-      for(var y=0;y<16;y++){
-        array[y] = Boolean(Math.random()>.5) ? 1 : 0;
-        temp = temp + array[y];
-        }
-    }
 
     for(var x = 0; x < 4; x++){
       $('#tempo1').append(array[x]);
@@ -123,23 +117,44 @@
       $(document).ready(function(){
 
           $('#body').fadeIn('fast');
-          $('#body').removeClass('bgred');
-          $('#body').removeClass('bggreen');
+
 
 //DISABLE CLICKABLITY
           for(var x=1;x<=16;x++){$('#box'+x).removeClass('b');}
 
 //RESET CODE
-          $(document).ready(function(){
+
             $('#reset').on('click',function(){
+              resetbg = 1;
+              $('#body').addClass('bgblack');
+              $('#body').removeClass('bg');
+              $('#body').removeClass('bgred');
+              $('#body').removeClass('bggreen');
+
+
+              for(var x=1;x<=16;x++){
+                $('#box'+x).fadeOut('fast', function(){
+                  $(this).attr('src','box.png');
+                });
+                $('#box'+x).fadeIn('fast');
+              }
               if(bgtemp == 1){$('#body').addClass('bggreenR');}
               else{$('#body').addClass('bgredR');}
-                $('#body').empty().load('game1restart.html');
 
+              $('#endg').fadeOut('fast',function(){
+                $('#start').fadeIn('fast');
+              });
+
+              $('#body').removeClass('bgredR');
+              $('#body').removeClass('bggreenR');
             });
-          });
+
 //SHOW THEN HIDE
           $('#start').click(function(){
+            $('#body').removeClass('bgred');
+            $('#body').removeClass('bggreen');
+            count = 0;
+            arrayg(array);
 
             $('#start').fadeOut('fast');
             $('#info').fadeOut('fast');
@@ -149,22 +164,18 @@
                 $('#box'+x).fadeOut('fast', function(){
                   $(this).attr('src','circle.png');
                 });
-                $('#box'+x).fadeIn('fast')
-              }
-
-              else{
-                $('#box'+x).fadeOut('fast', function(){
-                  $(this).attr('src','ex.png');
-                });
                 $('#box'+x).fadeIn('fast');
               }
+
             }
 
             setTimeout(function(){
               for(var x=1;x<=16;x++){
-                $('#box'+x).fadeOut('fast', function(){
-                  $(this).attr('src','box.png');
-                });
+                if(array[x-1]==1){
+                  $('#box'+x).fadeOut('fast', function(){
+                    $(this).attr('src','box.png');
+                  });
+                }
                 $('#box'+x).fadeIn('fast');
                 for(var z=1;z<=16;z++){$('#box'+z).addClass('b');}
               }
@@ -188,13 +199,13 @@
             });
             $('#box'+tmp).fadeIn('fast');
 
-            $(this).removeAttr('id');
+            $(this).removeClass('b');
 
             count = count + 1;
             //IF ALL CORRECT ARE SELECTED
               if(count == correct){
                 $('#body').addClass('bggreen'); bgtemp = 1;
-                for(var y=1;y<=16;y++){$('#box'+y).removeAttr('id');}
+                for(var y=1;y<=16;y++){$('#box'+y).removeClass('b');}
                 $('#endg').fadeIn('fast');
               }
 
@@ -217,7 +228,7 @@
                   });
                 $('#box'+y).fadeIn('fast');
                 }
-              $('#box'+y).removeAttr('id');
+              $('#box'+y).removeClass('b');
             }
             $('#endg').fadeIn('fast');
           }
